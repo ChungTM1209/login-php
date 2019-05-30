@@ -6,6 +6,7 @@ use Model\User;
 require "../model/User.php";
 require "../model/UserTable.php";
 require "../model/DBConnection.php";
+require "../controller/UserController.php";
 
 ?>
 
@@ -46,14 +47,11 @@ require "../model/DBConnection.php";
     if (!$_POST['email'] || !$_POST['password'] || !$_POST['name'] || !$_POST['job']){
         echo "Vui long nhap day du thong tin";
     } else {
-	    $email = $_POST['email'];
-	    $password = md5($_POST['password']);
-	    $name = $_POST['name'];
-	    $job = $_POST['job'];
-	    $user = new User($email, $password, $name, $job);
+
 	    $controller = new UserController();
-	    $controller->register($user);
+	    $controller->register();
     }
+//    echo $user;
 	?>
 </div>
 

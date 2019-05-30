@@ -31,4 +31,20 @@ class UserTable
 		$statement->execute();
 
 	}
+	public function login($email, $password){
+		$sql = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
+		$statement = $this->connection->prepare($sql);
+		$statement->execute();
+		$result = $statement->fetch();
+		return $result;
+	}
+	public function find($email){
+		$sql = "SELECT * FROM users WHERE email = '$email'";
+		$statement = $this->connection->prepare($sql);
+		$statement->execute();
+		$result = $statement->fetch();
+		$user = new User($result['email'], $result['password'], $result['name'],$result['job']);
+		$user->id = $result['id'];
+		return $user;
+	}
 }

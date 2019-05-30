@@ -9,8 +9,8 @@
 </head>
 <body>
 <h1>Test Ecommage</h1>
-<a href="view/register.php">Login</a>
-<a href="#">Register</a>
+<a href="view/login.php">Login</a>
+<a href="view/register.php">Register</a>
 
 </body>
 </html>

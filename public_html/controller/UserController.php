@@ -18,9 +18,24 @@ class UserController
 		$this->userTable = new UserTable($connection->connect());
 	}
 
-	public function register($user)
+	public function register()
 	{
-
-		$this->userTable->create($user);
+		$email = $_POST['email'];
+		$password = md5($_POST['password']);
+		$name = $_POST['name'];
+		$job = $_POST['job'];
+		$user = new User($email, $password, $name, $job);
+		return $this->userTable->create($user);
+	}
+	public function login(){
+		$email = $_POST['email'];
+		$password = md5($_POST['password']);
+		return $this->userTable->login($email, $password);
+	}
+	public function findByEmail($email){
+		return $this->userTable->find($email);
+	}
+	public function logout(){
+		session_destroy();
 	}
 }
